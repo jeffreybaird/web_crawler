@@ -7,7 +7,7 @@ module WebCrawler
       a1 = Tree.new("root",[a2])
       expected = ["root", "middle", "end"]
       nodes = []
-      a1.traverse{|x| nodes << x.name }
+      a1.traverse{|x| nodes << x.value }
       actual = nodes
       assert actual == expected, "expected: #{expected.inspect} but got: #{actual.inspect}"
     end
@@ -21,7 +21,7 @@ module WebCrawler
       a1 = Tree.new("root",[a2, b2])
       expected = ["root", "middle-a", "end-a3", "middle-b", "end-b3a", "end-b3b"]
       nodes =  []
-      a1.traverse{|x| nodes << x.name }
+      a1.traverse{|x| nodes << x.value }
       actual = nodes
       assert actual == expected, "expected: #{expected.inspect} but got: #{actual.inspect}"
     end

@@ -1,12 +1,16 @@
 module WebCrawler
   class Tree
-    attr_accessor :name, :children
+    attr_accessor :value, :children
 
-   def initialize(name, children = [])
-     @name = name
+   def initialize(value, children = [])
+     @value = value
      @children = children
    end
 
+   def add_child(child)
+     children << child
+     self
+   end
    def traverse(&block)
      yield self
      @children.each { |child| child.traverse(&block) }

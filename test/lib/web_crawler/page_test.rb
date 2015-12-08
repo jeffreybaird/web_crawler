@@ -11,11 +11,25 @@ module WebCrawler
       page = Page.new("http://www.jeffreyleebaird.com")
       page.expects(:get).
         returns(File.read("./test/resources/test.html"))
-      actual = page.links
-      expected = ["/", "http://www.industrialbjj.com/",
-                  "http://learnwithjeff.com", "https://github.com/jeffreybaird",
-                  "/blog", "http://learnwithjeff.com", "mailto:jeff@jeffreyleebaird.com",
-                  "http://twitter.com/jeffrey_baird", "/", "/blog", "/public_key"]
+      actual = page.formatted_links.map(&:to_s)
+      expected = [
+        "http://www.jeffreyleebaird.com/","http://www.industrialbjj.com/",
+        "http://learnwithjeff.com","https://github.com/jeffreybaird",
+        "http://www.jeffreyleebaird.com/blog","mailto:jeff@jeffreyleebaird.com",
+        "http://twitter.com/jeffrey_baird","http://www.jeffreyleebaird.com/public_key"
+      ]
+      assert actual == expected, "expected: #{expected} but got: #{actual}"
+    end
+
+    def test_it_can_find_all_local_links_on_a_page
+      page = Page.new("http://www.jeffreyleebaird.com")
+      page.expects(:get).
+        returns(File.read("./test/resources/test.html"))
+      actual = page.local_links.map(&:to_s)
+      expected =  [
+        "http://www.jeffreyleebaird.com/", "http://www.jeffreyleebaird.com/blog",
+        "http://www.jeffreyleebaird.com/public_key"
+      ]
       assert actual == expected, "expected: #{expected} but got: #{actual}"
     end
 
