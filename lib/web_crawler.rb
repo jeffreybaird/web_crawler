@@ -1,4 +1,5 @@
 require "web_crawler/version"
+require "web_crawler/tree"
 require "web_crawler/page"
 
 module WebCrawler
