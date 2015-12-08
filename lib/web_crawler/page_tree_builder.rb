@@ -2,6 +2,7 @@ module WebCrawler
   class PageTreeBuilder
     VISITED = []
     attr_reader :root
+    
     def initialize(url)
       @root = Page.new(url)
       @visited = VISITED << url
