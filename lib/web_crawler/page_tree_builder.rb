@@ -2,7 +2,7 @@ module WebCrawler
   class PageTreeBuilder
     VISITED = []
     attr_reader :root
-    
+
     def initialize(url)
       @root = Page.new(url)
       @visited = VISITED << url
@@ -26,6 +26,7 @@ module WebCrawler
         next if visited.include?(link.to_s)
         builder = PageTreeBuilder.new(link.to_s)
         visited << link.to_s
+        binding.pry
         tree_node.add_child(builder.build)
       end
       build

@@ -26,5 +26,17 @@ module WebCrawler
       assert actual == expected, "expected: #{expected.inspect} but got: #{actual.inspect}"
     end
 
+    def test_map_children
+        a3a = Tree.new("end-a3")
+        b3b = Tree.new("end-b3b")
+        b3a = Tree.new("end-b3a")
+        a2 = Tree.new("middle-a", [a3a])
+        b2 = Tree.new("middle-b", [b3a, b3b])
+        a1 = Tree.new("root",[a2, b2])
+        expected = ["root", "middle-a", "end-a3", "middle-b", "end-b3a", "end-b3b"]
+        actual = a1.traverse.map{|x| x.value }
+        assert actual == expected, "expected: #{expected.inspect} but got: #{actual.inspect}"
+    end
+
   end
 end

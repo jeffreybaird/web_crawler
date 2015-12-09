@@ -18,6 +18,21 @@ module WebCrawler
       url.to_s
     end
 
+    def to_h()
+      {
+      resource: to_s,
+      assets: {
+          stylesheets: stylesheets,
+          images: images,
+          scripts: scripts
+        },
+      children: []}
+    end
+
+    def to_a
+      to_h.to_to_a
+    end
+
     def local_links
       formatted_links.select{|x| x.host == URI.parse(string_of_url(url)).host }
     end

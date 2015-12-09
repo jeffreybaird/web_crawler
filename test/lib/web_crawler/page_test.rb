@@ -65,15 +65,23 @@ module WebCrawler
       assert actual == expected, "expected: #{expected} but got: #{actual}"
     end
 
-    # def test_it_can_parse
-    #   page.expects(:get).
-    #     with("http://www.jeffreyleebaird.com").
-    #     returns(File.read("./test/resources/test.html"))
-    #
-    #   actual = Page.run("http://www.jeffreyleebaird.com")
-    #   expected = JSON.parse(File.read("test/resources/test.json")).to_json
-    #   assert actual == expected, "expected: #{expected} but got: #{actual.inspect}"
-    # end
+    def test_it_can_reture_hash_rep
+      page = Page.new("http://www.jeffreyleebaird.com")
+      page.expects(:get).
+        returns(File.read("./test/resources/test.html"))
+
+      actual = page.to_h
+      expected = {:resource=>"http://www.jeffreyleebaird.com",
+                  :assets=>
+                    {:stylesheets=>
+                      ["http://yui.yahooapis.com/pure/0.6.0/base-min.css",
+                        "http://yui.yahooapis.com/pure/0.6.0/pure-min.css",
+                        "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"],
+                      :images=>["img/jeffrey.jpg"],
+                      :scripts=>["fakestatic.js"]},
+                      :children=>[]}
+      assert actual == expected, "expected: #{expected} but got: #{actual}"
+    end
 
   end
 

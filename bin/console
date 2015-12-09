@@ -10,5 +10,6 @@ require "web_crawler"
 # require "pry"
 # Pry.start
 
-require "irb"
-IRB.start
+require "pry"
+Pry.start
+include WebCrawler
