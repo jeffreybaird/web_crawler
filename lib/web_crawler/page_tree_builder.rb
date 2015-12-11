@@ -1,48 +1,59 @@
 module WebCrawler
   class PageTreeBuilder
     VISITED = []
-    attr_reader :root
+    attr_reader :root, :node_collection
 
     def initialize(url)
       @root = Page.new(url)
-      @visited = VISITED << url
-    end
-
-    def build
-      return tree_node if all_child_links_have_been_visited? && children_of_children_visited?
-      add_children
+      @visited = [url.to_s]
+      @node_collection = get_all_nodes([Node.new(0, @root, nil)])
     end
 
     def visited
-      VISITED.uniq
+      @visited
     end
 
-    def tree_node
-      @tree_node ||= Tree.new(root)
+    def build
+      build_the_tree(node_collection)
     end
 
-    def add_children
-      root.local_links.each do |link|
-        next if visited.include?(link.to_s)
-        builder = PageTreeBuilder.new(link.to_s)
-        visited << link.to_s
-        binding.pry
-        tree_node.add_child(builder.build)
+    def get_all_nodes(nodes=node_collection)
+      return nodes if (get_links_from_deepest_pages(nodes) - visited).empty?
+      get_the_deepest_nodes(nodes).each do |node|
+        node.page.local_links.each do |link|
+          next if visited.include?(link.to_s)
+          visited << link.to_s
+          nodes << Node.new(node.depth + 1, Page.new(link),node.page.url.to_s)
+        end
       end
-      build
+      get_all_nodes(nodes)
     end
 
-    def children_of_children_visited?
-      return true if tree_node.children.empty?
-      tree_node.children.map do |child|
-        PageTreeBuilder.new(child.value.to_s).all_child_links_have_been_visited?
-      end.all?
+    def get_the_deepest_nodes(nodes)
+      max_depth = nodes.max{|x| x.depth}.depth
+      nodes.select{|node| node.depth == max_depth}
     end
 
-    def all_child_links_have_been_visited?
-      remaining = (root.local_links.map(&:to_s) - visited)
-      remaining.empty?
+    def get_links_from_deepest_pages(nodes)
+      get_the_deepest_nodes(nodes).map{|node| node.page.local_links}.flatten.map(&:to_s)
     end
 
+    def build_the_tree(nodes, trees=nil)
+      return trees.first if nodes.empty?
+      base = get_the_deepest_nodes(nodes)
+      if trees
+        new_trees = base.map{|n| Tree.new(n.page, get_children(n,trees), n.parent_link) }
+      else
+        new_trees = base.map{|n| Tree.new(n.page, [], n.parent_link) }
+      end
+      #binding.pry
+      build_the_tree(nodes - base,new_trees)
+    end
+
+    def get_children(node,trees)
+      trees.select{|t| t.parent == node.page.url.to_s}
+    end
+
+    Node = Struct.new(:depth, :page ,:parent_link)
   end
 end

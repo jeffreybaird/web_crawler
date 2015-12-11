@@ -1,10 +1,11 @@
 module WebCrawler
   class Tree
-    attr_accessor :value, :children
+    attr_accessor :value, :children, :parent
 
-   def initialize(value, children = [])
+   def initialize(value, children = [],parent=nil)
      @value = value
      @children = children
+     @parent = parent
    end
 
    def add_child(child)

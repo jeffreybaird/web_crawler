@@ -1,3 +1,4 @@
+require 'awesome_print'
 module WebCrawler
   class JsonViewer
 
@@ -21,11 +22,11 @@ module WebCrawler
     end
 
     def to_json
-      to_h.to_json
+      to_h(root_tree).to_json
     end
 
     def print
-      ap to_json
+      ap to_h(root_tree)
     end
 
   end

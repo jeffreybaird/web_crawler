@@ -1,102 +1,111 @@
 {
-    "resource": "http://www.jeffreyleebaird.com",
-    "assets": {
+  "resource": "http://www.jeffreyleebaird.com/",
+  "assets": {
+    "stylesheets": [
+      "http://yui.yahooapis.com/pure/0.6.0/base-min.css",
+      "http://yui.yahooapis.com/pure/0.6.0/pure-min.css",
+      "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"
+    ],
+    "images": [
+      "img/jeffrey.jpg"
+    ],
+    "scripts": []
+  },
+  "children": [
+    {
+      "resource": "http://www.jeffreyleebaird.com/blog",
+      "assets": {
         "stylesheets": [
-          {"resource": "http://yui.yahooapis.com/pure/0.6.0/base-min.css" },
-          {"resource": "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"},
-          {"resource ": "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"}
+          "http://yui.yahooapis.com/pure/0.6.0/base-min.css",
+          "http://yui.yahooapis.com/pure/0.6.0/pure-min.css",
+          "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"
         ],
-        "images": [
-          {"resource":"img/jeffrey.jpg" }
-        ],
+        "images": [],
         "scripts": []
-    },
-    "children": [
-      {
-        "resource": "/blog",
-        "assets": {
-            "stylesheets": [
-              {"resource": "http://yui.yahooapis.com/pure/0.6.0/base-min.css" },
-              {"resource": "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"},
-              {"resource ": "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"}
-            ],
-            "images": [],
-            "scripts": []
-        },
-        "children": [
-          {"resource": "blog/posts/giving_up_booze",
-            "assets": {
-              "stylesheets": [
-                {"resource": "http://yui.yahooapis.com/pure/0.6.0/base-min.css" },
-                {"resource": "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"},
-                {"resource ": "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"}
-              ],
-              "images": [],
-              "scripts": []
-            },
-            "children": []
-          },
-          {"resource": "blog/posts/lifting_jiujitsu_and_depression",
-            "assets": {
-              "stylesheets": [
-                {"resource": "http://yui.yahooapis.com/pure/0.6.0/base-min.css" },
-                {"resource": "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"},
-                {"resource ": "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"}
-              ],
-              "images": [],
-              "scripts": []
-            },
-            "children": []
-          },
-          {"resource": "blog/posts/that_didnt_last_long",
-            "assets": {
-              "stylesheets": [
-                {"resource": "http://yui.yahooapis.com/pure/0.6.0/base-min.css" },
-                {"resource": "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"},
-                {"resource ": "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"}
-              ],
-              "images": [],
-              "scripts": []
-            },
-            "children": []
-          },
-          {"resource": "blog/posts/a_letter_a_day",
-            "assets": {
-              "stylesheets": [
-                {"resource": "http://yui.yahooapis.com/pure/0.6.0/base-min.css" },
-                {"resource": "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"},
-                {"resource ": "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"}
-              ],
-              "images": [],
-              "scripts": []
-            }
-          },
-          {"resource": "blog/posts/first_post",
-            "assets": {
-              "stylesheets": [
-                {"resource": "http://yui.yahooapis.com/pure/0.6.0/base-min.css" },
-                {"resource": "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"},
-                {"resource ": "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"}
-              ],
-              "images": [],
-              "scripts": []
-            },
-            "children": []
-          }
-        ]
       },
-      {
-        "resource": "/public_key",
-        "assets": {
+      "children": [
+        {
+          "resource": "http://www.jeffreyleebaird.com/blog/posts/giving_up_booze",
+          "assets": {
             "stylesheets": [
-              {"resource": "http://yui.yahooapis.com/pure/0.6.0/base-min.css" },
-              {"resource": "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"},
-              {"resource ": "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"}
+              "http://yui.yahooapis.com/pure/0.6.0/base-min.css",
+              "http://yui.yahooapis.com/pure/0.6.0/pure-min.css",
+              "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"
             ],
             "images": [],
             "scripts": []
+          },
+          "children": []
         },
-        "children": []
-      }
-    ]
-  }
+        {
+          "resource": "http://www.jeffreyleebaird.com/blog/posts/lifting_jiujitsu_and_depression",
+          "assets": {
+            "stylesheets": [
+              "http://yui.yahooapis.com/pure/0.6.0/base-min.css",
+              "http://yui.yahooapis.com/pure/0.6.0/pure-min.css",
+              "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"
+            ],
+            "images": [
+              "https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xat1/v/t1.0-9/11075302_1629199407298918_2784876063596122700_n.jpg?oh=068bbec2c910b908debc74f6a5cf8cd9&oe=5579CFC2&__gda__=1438289354_457af265960bd16c3f870c9aa09a550e",
+              "https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/11038401_1620594924826033_5193765192030838840_n.jpg?oh=a9e1f2ca6b8de974ed7dac187335780a&oe=5574B1ED&__gda__=1436961159_e73c50ccadefb3aba0c8e3c83d0d0692"
+            ],
+            "scripts": []
+          },
+          "children": []
+        },
+        {
+          "resource": "http://www.jeffreyleebaird.com/blog/posts/that_didnt_last_long",
+          "assets": {
+            "stylesheets": [
+              "http://yui.yahooapis.com/pure/0.6.0/base-min.css",
+              "http://yui.yahooapis.com/pure/0.6.0/pure-min.css",
+              "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"
+            ],
+            "images": [],
+            "scripts": []
+          },
+          "children": []
+        },
+        {
+          "resource": "http://www.jeffreyleebaird.com/blog/posts/a_letter_a_day",
+          "assets": {
+            "stylesheets": [
+              "http://yui.yahooapis.com/pure/0.6.0/base-min.css",
+              "http://yui.yahooapis.com/pure/0.6.0/pure-min.css",
+              "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"
+            ],
+            "images": [],
+            "scripts": []
+          },
+          "children": []
+        },
+        {
+          "resource": "http://www.jeffreyleebaird.com/blog/posts/first_post",
+          "assets": {
+            "stylesheets": [
+              "http://yui.yahooapis.com/pure/0.6.0/base-min.css",
+              "http://yui.yahooapis.com/pure/0.6.0/pure-min.css",
+              "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"
+            ],
+            "images": [],
+            "scripts": []
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "resource": "http://www.jeffreyleebaird.com/public_key",
+      "assets": {
+        "stylesheets": [
+          "http://yui.yahooapis.com/pure/0.6.0/base-min.css",
+          "http://yui.yahooapis.com/pure/0.6.0/pure-min.css",
+          "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"
+        ],
+        "images": [],
+        "scripts": []
+      },
+      "children": []
+    }
+  ]
+}
