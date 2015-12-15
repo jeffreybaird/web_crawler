@@ -80,7 +80,7 @@ module WebCrawler
     end
 
     def string_of_url(url)
-      url.is_a?(URI) ? url.to_s[0..-2] : url
+      url.is_a?(URI) ? url.to_s : url
     end
 
     def links_as_uri_objects
