@@ -11,20 +11,21 @@ $ gem install web_crawler
 
 To output JSON to the console:
 
-````code
+````bash
 bin/web_crawler -u http://www.jeffreyleebaird.com/
 ````
 To output JSON to a file:
 
-````code
+````bash
 bin/web_crawler -u http://www.jeffreyleebaird.com/
 ````
 ## Development
-
+````bash
 $git clone git@github.com:jeffreybaird/web_crawler.git
 $cd web_crawler
 $bundle install
 $rake test
+````
 
 ## Contributing
 
