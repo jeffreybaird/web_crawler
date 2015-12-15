@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "web_crawler"
+require 'awesome_print'
+require "json"
+require 'optparse'
+require 'pry'
+
+options = {}
+optparse = OptionParser.new do |opts|
+  opts.banner = "Usage: bin/web_crawler -u http://www.digitalocean.com/"
+
+  opts.on("-u [url]", "--url  [url]", "Url to crawl") do |url|
+    options[:url] = url
+  end
+
+  opts.on("-w [FILENAME]", "--write [FILENAME]", "Write JSON to File") do |file|
+    options[:filename] = file
+  end
+end
+optparse.parse!
+
+raise OptionParser::MissingArgument, "Please provide a url" if options[:url].nil?
+
+tree = WebCrawler::PageTreeBuilder.new(options[:url]).build
+formatter = WebCrawler::JsonViewer.new(tree)
+if options[:filename]
+  File.open(options[:filename], "w+"){|f| f.write(JSON.pretty_generate(formatter.to_h))}
+else
+  ap formatter.to_h
+end

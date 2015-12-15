@@ -1,16 +1,12 @@
 module WebCrawler
   class PageTreeBuilder
     VISITED = []
-    attr_reader :root, :node_collection
+    attr_reader :root, :node_collection, :visited
 
     def initialize(url)
       @root = Page.new(url)
       @visited = [url.to_s]
       @node_collection = get_all_nodes([Node.new(0, @root, nil)])
-    end
-
-    def visited
-      @visited
     end
 
     def build
@@ -22,6 +18,7 @@ module WebCrawler
       get_the_deepest_nodes(nodes).each do |node|
         node.page.local_links.each do |link|
           next if visited.include?(link.to_s)
+          puts "Visiting #{link.to_s}"
           visited << link.to_s
           nodes << Node.new(node.depth + 1, Page.new(link),node.page.url.to_s)
         end

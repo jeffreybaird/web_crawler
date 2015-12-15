@@ -1,5 +1,6 @@
 require 'httparty'
 require 'nokogiri'
+require 'pry'
 
 module WebCrawler
   class Page
@@ -7,11 +8,19 @@ module WebCrawler
     attr_reader :url
 
     def initialize(url)
-      @url = url
+      if url.is_a?(URI)
+        @url = url
+      else
+        @url = URI.parse(url)
+      end
     end
 
     def get
-      @get ||= HTTParty.get(url).body
+      begin
+        @get ||= HTTParty.get(url).body
+      rescue HTTParty::RedirectionTooDeep
+        @get ||= ""
+      end
     end
 
     def to_s
@@ -64,7 +73,6 @@ module WebCrawler
       end.uniq
     end
 
-
     private
 
     def parsed_page
@@ -76,7 +84,13 @@ module WebCrawler
     end
 
     def links_as_uri_objects
-      links.map{|link| URI.parse(link)}
+      links.map do |link|
+        begin
+          URI.parse(link.strip)
+        rescue
+          URI.parse("")
+        end
+      end
     end
 
     def links

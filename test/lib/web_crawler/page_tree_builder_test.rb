@@ -14,7 +14,6 @@ module WebCrawler
                   "http://www.jeffreyleebaird.com/blog/posts/a_letter_a_day",
                   "http://www.jeffreyleebaird.com/blog/posts/first_post",
                   "http://www.jeffreyleebaird.com/public_key"]
-      nodes = builder.node_collection
       tree = builder.build
       links = []
       tree.traverse{|x| links << x.value.to_s}

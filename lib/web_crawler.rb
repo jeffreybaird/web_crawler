@@ -5,5 +5,4 @@ require "web_crawler/page"
 require "web_crawler/json_viewer"
 
 module WebCrawler
-  # Your code goes here...
 end
