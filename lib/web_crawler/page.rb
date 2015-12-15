@@ -1,6 +1,5 @@
 require 'httparty'
 require 'nokogiri'
-require 'pry'
 
 module WebCrawler
   class Page

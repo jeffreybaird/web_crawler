@@ -5,7 +5,6 @@ require "web_crawler"
 require 'awesome_print'
 require "json"
 require 'optparse'
-require 'pry'
 
 options = {}
 optparse = OptionParser.new do |opts|
